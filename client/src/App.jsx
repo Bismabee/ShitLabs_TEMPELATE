@@ -1,8 +1,26 @@
-import React from 'react'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import Layout from './components/Layout'
+import Home from './pages/Home'
+import LandingPage from './pages/LandingPage'
+import PublicWaitlist from './pages/PublicWaitlist'
+import DashboardGate from './pages/DashboardGate'
+import NotFound from './pages/NotFound'
 
 const App = () => {
   return (
-    <div className='bg-red-400 p-4'>TAILWIND UP AND RUNNING</div>
+    <BrowserRouter>
+      <Layout>
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          
+          <Route path="/dashboard" element={<DashboardGate />} />
+          <Route path="/w/:slug" element={<PublicWaitlist />} />
+         
+         
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Layout>
+    </BrowserRouter>
   )
 }
 
